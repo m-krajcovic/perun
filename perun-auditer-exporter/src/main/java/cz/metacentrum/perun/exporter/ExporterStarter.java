@@ -38,7 +38,7 @@ public class ExporterStarter
 
 	public ExporterStarter(OutputType outputType) {
 		springCtx = new ClassPathXmlApplicationContext("/perun-auditer-exporter.xml");
-		this.dataSource = springCtx.getBean("dataSource", org.apache.tomcat.dbcp.dbcp.BasicDataSource.class);
+		this.dataSource = springCtx.getBean("dataSource", DataSource.class);
 
 		this.outputType = outputType;
 	}
@@ -62,6 +62,7 @@ public class ExporterStarter
 			String exporterId = cmd.getOptionValue("id");
 			if (exporterId == null) {
 				System.err.println("Exporter ID must be specified.");
+				help(options);
 				System.exit(1);
 			}
 
@@ -155,6 +156,3 @@ public class ExporterStarter
 		STDOUT, TCP, UDP;
 	}
 }
-
-
-

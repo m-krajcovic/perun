@@ -97,6 +97,12 @@
 				</executions>
 				<configuration>
 					<mainClass>cz.metacentrum.perun.exporter.ExporterStarter</mainClass>
+					<systemProperties>
+						<systemProperty>
+							<key>spring.profiles.default</key>
+							<value>${spring.profiles.default}</value>
+						</systemProperty>
+					</systemProperties>
 				</configuration>
 			</plugin>
 
@@ -197,6 +203,7 @@
 			<id>devel</id>
 
 			<activation>
+				<activeByDefault>true</activeByDefault>
 				<property>
 					<name>devel</name>
 				</property>
